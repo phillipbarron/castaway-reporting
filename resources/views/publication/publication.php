@@ -30,13 +30,13 @@
                 </div>
                 <div class="row">
                     <label>Date range</label>
-                    <input type="text" name="datepicker" class="form-control"/>
+                    <input type="text" name="datepicker" class="form-control" id="datePicker"/>
                 </div>
 
             </div>
         </div>
         <div class="col-md-4 form-group "">
-            <div class="row">
+            <div class="row container" >
                 <label>Results</label>
                 <div id="report"></div>
             </div>
@@ -48,6 +48,9 @@
     <script type="text/javascript">
         $(function() {
             $('input[name="datepicker"]').daterangepicker({
+                locale: {
+                    format: 'DD MMM YYYY'
+                },
                 "startDate": "11/06/2016",
                 "endDate": "11/12/2016"
                 }, function(start, end, label) {
@@ -60,7 +63,7 @@
         var app = $("#application").val();
         var event = $("#event").val();
         $.get("http://localhost:8090/report/" + app + "/" + event + "/" + startDate + "/" + endDate, function( data ) {
-            $("#report").html("<strong>" + data + "</strong> " + event + " events found for range");
+            $("#report").html("<strong>" + data + "</strong> " + event + " events found between " + $("#datePicker").val());
         });
         }
     </script>
