@@ -71,7 +71,7 @@
         var app = $("#application").val();
         var event = $("#event").val();
         $.get("http://localhost:8090/report/" + app + "/" + event + "/" + startDate + "/" + endDate, function( data ) {
-            $("#report").html("<strong>" + data + "</strong> " + event + " events found between " + $("#datePicker").val());
+            $("#report").html("<strong>" + (data['count']) + "</strong> " + event + " events found between " + $("#datePicker").val());
         });
         }
     </script>
